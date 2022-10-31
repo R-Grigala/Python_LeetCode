@@ -26,7 +26,7 @@
 
 # 1 <= n <= 231 - 1
 
-def isHappy(self, n: int) -> bool :
+def isHappy(n: int) -> bool :
     
     def get_next(n):
         total_sum = 0
@@ -41,3 +41,6 @@ def isHappy(self, n: int) -> bool :
         n = get_next(n)
 
     return n == 1
+
+
+# print(isHappy(19))
