@@ -26,7 +26,7 @@
 
 # 1 <= n <= 231 - 1
 
-def isHeappy(self, n: int) -> bool :
+def isHappy(self, n: int) -> bool :
     
     def get_next(n):
         total_sum = 0
