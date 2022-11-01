@@ -29,3 +29,20 @@
 # Input: grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
 # Output: [0,1,2,3,4,-1]
 
+def findBall(grid: list[list[int]]) -> list[int]:
+    n_r, n_c = len(grid), len(grid[0])
+    answer =list(range(n_c))
+
+    for r in range(n_r):
+        for i in range(n_c):
+            c = answer[i]
+            if c == -1: continue
+            c_nxt = c + grid[r][c]
+            if c_nxt < 0 or c_nxt >= n_c or grid[r][c_nxt] == -grid[r][c]:
+                answer[i] = -1
+                continue
+            answer[i] += grid[r][c]
+    return answer
+    
+    
+# print(findBall([[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]))
