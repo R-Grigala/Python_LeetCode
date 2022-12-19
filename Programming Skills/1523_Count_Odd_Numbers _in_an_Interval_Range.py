@@ -17,4 +17,4 @@ def countOdds(low: int, high: int) -> int:
         return (high - low) // 2
     return (high - low) // 2 + 1
 
-print(countOdds(3, 7))
+# print(countOdds(3, 7))
