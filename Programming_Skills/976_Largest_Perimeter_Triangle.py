@@ -20,3 +20,13 @@
 # You cannot use the side lengths 1, 2, and 10 to form a triangle.
 # As we cannot use any three side lengths to form a triangle of non-zero area, we return 0.
 
+
+def largestPerimeter(A):
+    A = sorted(A)[::-1]
+    for i in range(len(A) - 2):
+        if A[i] < A[i + 1] + A[i + 2]:
+            return A[i] + A[i + 1] + A[i + 2]
+    return 0
+
+
+# print(largestPerimeter([2, 1, 2]))
