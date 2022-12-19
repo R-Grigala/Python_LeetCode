@@ -21,14 +21,13 @@
 # Result = 32 - 11 = 21
 
 def subtractProductAndSum(n):
-    sum_n = 0
-    div_n = 1
-    n = str(n)
-    for i in n:
-        sum_n = sum_n + int(i)
-        div_n = div_n * int(i)
-        
-    return div_n - sum_n
+    
+    list_digits = [int(x) for x in str(n)]
+    sum_n = sum(list_digits)
+    multiplication = 1
+    for x in list_digits:
+        multiplication *= x
 
+    return multiplication - sum_n
 
 # print(subtractProductAndSum(234))
