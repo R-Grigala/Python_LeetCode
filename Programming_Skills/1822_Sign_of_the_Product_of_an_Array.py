@@ -24,7 +24,7 @@
 # Output: -1
 # Explanation: The product of all values in the array is -1, and signFunc(-1) = -1
 
-def arraySign(self, nums: list[int]) -> int:
+def arraySign(nums: list[int]) -> int:
     count = 0
     for num in nums:
         if num == 0:
@@ -32,3 +32,5 @@ def arraySign(self, nums: list[int]) -> int:
         if num < 0:
             count +=1
     return 1 if count % 2 == 0 else -1
+
+print(arraySign(nums = [-1,-2,-3,-4,3,2,1]))
