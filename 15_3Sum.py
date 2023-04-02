@@ -26,26 +26,35 @@
 # Explanation: The only possible triplet sums up to 0.
 
 
-def threeSum(self, nums: list[int]) -> list[list[int]]:
+def threeSum(nums: list[int]) -> list[list[int]]:
     result = []
     nums.sort()
+
+    length_nums = len(nums)
     
-    for i, v in enumerate(nums):
-        if i > 0 and v == nums[i -1]
+    for x in range(0, length_nums - 2):
+        if x > 0 and nums[x] == nums[x -1]:
             continue
 
-        l, r = i + 1, len(nums) -1
-        while l < r:
-            threeSum = v + nums[l] + nums[r]
+        lower, higher = x + 1, length_nums - 1
+        while higher > lower:
+            threeSum = nums[lower] + nums[higher] + nums[x]
             if threeSum > 0:
-                r -= 1
+                higher -= 1
             elif threeSum < 0:
-                l += 1
+                lower += 1
             else:
-                result.append([v, nums[l], nums[r]])
-                l += 1
-                while nums[l] == nums[l - 1] and l < r:
-                    l += 1
+                result.append([nums[x], nums[lower], nums[higher]])
+                lower += 1
+                if nums[lower] == nums[lower - 1] and lower < higher:
+                    lower += 1
     return result
 
-print(threeSum([-1,0,1,2,-1,-4]))
+
+print(threeSum(nums = [-1,0,1,2,-1,-4]))
+
+
+#Time Complexity: 
+#   sort() => O(nlog(n))
+#   2 loop => O(n^2)
+#   Time: O(nlog(n)) + O(n^2) => O(n^2)
