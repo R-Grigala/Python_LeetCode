@@ -46,7 +46,7 @@ def threeSum(nums: list[int]) -> list[list[int]]:
             else:
                 result.append([nums[x], nums[lower], nums[higher]])
                 lower += 1
-                if nums[lower] == nums[lower - 1] and lower < higher:
+                while nums[lower] == nums[lower - 1] and lower < higher:
                     lower += 1
     return result
 
