@@ -43,16 +43,22 @@ def minimumLength(s: str) -> int:
         The minimum length of the string after removal.
     """
 
-    l, r = 0, len(s) - 1
-    while l < r and s[l] == s[r]:
-        char = s[l]  # Store the current character
-        # Move left pointer until it points to a different character or reaches the end
-        while l <= r and s[l] == char:
-            l += 1
-        # Move right pointer until it points to a different character or reaches the beginning
-        while l <= r and s[r] == char:
-            r -= 1
-    return r - l + 1  # Return the length of the remaining characters
+    if len(s) <= 1:  # Base case: String with length 0 or 1 needs no processing
+        return len(s)
+
+    while len(s) > 1 and s[0] == s[-1]:  # Loop until no more characters can be removed from ends
+        i = 0
+        while i + 1 < len(s) and s[i] == s[i + 1]:  # Find the end of the first repeated character block
+            i += 1
+
+        j = len(s) - 1
+        while j - 1 > 0 and s[j] == s[j - 1] and j != i:  # Find the start of the last repeated character block (excluding the first block)
+            j -= 1
+
+        s = s[i + 1:j]  # Remove the characters between the pointers
+
+    return len(s)  # Return the final length of the string
+
 
 # Example usage
 print(minimumLength("aabccabba"))  # Output: 2 (removing all characters 'a' and 'b')
