@@ -31,3 +31,41 @@
 # - Take prefix = "aa" and suffix = "a" and remove them, s = "bccabb".
 # - Take prefix = "b" and suffix = "bb" and remove them, s = "cca".
 
+def minimumLength(s: str) -> int:
+    """
+    Finds the minimum length of a string after removing characters 
+    forming any continuous sub-strings where all characters are the same.
+
+    Args:
+        s: The input string.
+
+    Returns:
+        The minimum length of the string after removal.
+    """
+
+    l, r = 0, len(s) - 1
+    while l < r and s[l] == s[r]:
+        char = s[l]  # Store the current character
+        # Move left pointer until it points to a different character or reaches the end
+        while l <= r and s[l] == char:
+            l += 1
+        # Move right pointer until it points to a different character or reaches the beginning
+        while l <= r and s[r] == char:
+            r -= 1
+    return r - l + 1  # Return the length of the remaining characters
+
+# Example usage
+print(minimumLength("aabccabba"))  # Output: 2 (removing all characters 'a' and 'b')
+
+
+# Time Complexity:
+
+# The time complexity of this algorithm is  O(n), where n is the length of the input string s.
+
+# Here's how the complexity breaks down:
+
+# The initialization (l, r = 0, len(s) - 1) takes constant time (O(1)).
+# The while loop iterates at most n times, in the worst case, where n is the length of the string. In each iteration:
+# Assigning char takes constant time (O(1)).
+# The inner while loops (moving l and r) iterate at most n times in the worst case, but typically much less since they stop when encountering a different character.
+# The final return statement takes constant time (O(1)).
